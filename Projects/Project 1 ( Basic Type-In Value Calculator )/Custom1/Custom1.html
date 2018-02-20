@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="Custom1.js"></script>
+  </head>
+
+  <body>
+    <h1 align="center">This is a basic type-in value calculator.</h1>
+    <div class="verdict">
+      <p>Type in the first value.</p><input id="x" type="text">
+      <p>Type in the second value.</p><input id="y" type="text">
+    </div>
+    <p>Select your operatior below:</p>
+    <button type="button" onclick="add(document.getElementById('x').value,document.getElementById('y').value);"> + </button>
+    <button type="button" onclick="sub(document.getElementById('x').value,document.getElementById('y').value);"> - </button>
+    <button type="button" onclick="mult(document.getElementById('x').value,document.getElementById('y').value);"> * </button>
+    <button type="button" onclick="div(document.getElementById('x').value,document.getElementById('y').value);"> / </button>
+    <br /><br />
+    <p>Click "Get Result" from button below to show the result that you wish for.</p>
+    <button onclick="result(r)">Get Result</button>
+    <br /><br />
+    <input id="z" readonly>
+
+  </body>
+
+</html>
