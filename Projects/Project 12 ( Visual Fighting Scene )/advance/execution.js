@@ -2,6 +2,7 @@
 alert("This game require player to type in either 1,2,3 or 4 based on your action. Fail to execute command end with your HP decrease.");
 var d = confirm("By pressing 'ok', you agree to the game rule. Have fun.");
 if ( d == true ){
+	alert("An enemy has appear.");
 	selection();
 }
 else {
@@ -12,15 +13,12 @@ else {
 
 function PhyFight(){
 	physicalDmg();
-	userDealDamageWithoutBuff();
-	checkAllHP();
 }
 
 function defend(){
 	alert("Player is in defend mode.");
 	buffRatio = Math.random() * 2 + 1;
 	userDealDamageWithBuff();
-	checkUserHP();
 }
 
 function checkAllHP(){
@@ -47,34 +45,26 @@ function userRun(){
 	else {
 		alert("Player fail to run away.");
 		userDealDamageWithoutBuff();
-		checkUserHP();
 	}
 }
 
 function userFailToExecute(){
 	alert("Player fail to execute the command.");
 	userDealDamageWithoutBuff();
-	checkUserHP();
 }
 
 function nullify(){
 	alert("Player use " + user.stats + " magic to attack enemy. It doesn't deal any damage to enemy.");
-	userDealDamageWithoutBuff();
-	checkUserHP();
 }
 
 function weak(){
 	alert("Player use " + user.stats + " magic to attack enemy. It is not effective.");
 	weakDmg();
-	userDealDamageWithoutBuff();
-	checkAllHP();
 }
 
 function strong(){
 	alert("Player use " + user.stats + " magic to attack enemy. It is super effective.");
 	strongDmg();
-	userDealDamageWithoutBuff();
-	checkAllHP();
 }
 
 function winScene(){
@@ -87,4 +77,34 @@ function loseScene(){
 
 function tie(){
 	alert("You and enemy retreat and promise to battle again. Good ending right? By the way, thanks for playing this game.");
+}
+
+function conditionA(){
+	if ( user.condition.poison == true ){
+		user.HP -= 250;
+		counter1--;
+	}
+	else if ( trueEnemy.condition.poison == true ){
+		trueEnemy.HP -= 1000;
+		alert("Enemy damaged due to poison.");
+		counter2--;
+	}
+	else {
+		
+	}
+	checkAllHP();
+}
+
+function conditionB(){
+	if ( counter2 == 0 ) {
+		alert("Enemy's poison effect wore off.");
+		trueEnemy.condition.poison = false;
+	}
+	else if ( counter1 == 0 ){
+		alert("Player's poison effect wore off.");
+		user.condition.poison = false;
+	}
+	else {
+		
+	}
 }

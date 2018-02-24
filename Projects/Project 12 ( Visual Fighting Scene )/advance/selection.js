@@ -1,22 +1,26 @@
 function selection(){
 	var a = prompt("Please select options: 1.Attack  2.Defend  3.Run  4.Check Status");
 	if ( a == 1 ){
-		var b = prompt("Please select which attack you want to use: 1.Physical  2.Magic");
+		var b = prompt("Please select which attack you want to use: 1.Physical  2.Skill");
 		if ( b == 1 ){
 			PhyFight();
+			userDealDamageWithoutBuff();
 		}
 		else if ( b == 2 ){
-			var c = prompt("Please select your magic-type attack: 1.Fire  2.Water  3.Terra");
+			var c = prompt("Please select your skill: 1.Fyra  2.Aqua  3.Terra  4.Acid");
 			if ( c == 1 ){
 				user.stats = fire;
 				if ( user.stats == trueEnemy.stats ){
 					nullify();
+					userDealDamageWithoutBuff();
 				}
 				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "Water" ){
 					weak();
+					userDealDamageWithoutBuff();
 				}
 				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "Terra" ){
 					strong();
+					userDealDamageWithoutBuff();
 				}
 				else {
 					alert("Error Occur.");
@@ -26,12 +30,15 @@ function selection(){
 				user.stats = water;
 				if ( user.stats == trueEnemy.stats ){
 					nullify();
+					userDealDamageWithoutBuff();
 				}
 				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "Terra" ){
 					weak();
+					userDealDamageWithoutBuff();
 				}
 				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "Fire" ){
 					strong();
+					userDealDamageWithoutBuff();
 				}
 				else {
 					alert("Error Occur.");
@@ -41,16 +48,26 @@ function selection(){
 				user.stats = terra;
 				if ( user.stats == trueEnemy.stats ){
 					nullify();
+					userDealDamageWithoutBuff();
 				}
 				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "Fire" ){
 					weak();
+					userDealDamageWithoutBuff();
 				}
 				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "Water" ){
 					strong();
+					userDealDamageWithoutBuff();
 				}
 				else {
 					alert("Error Occur.");
 				}
+			}
+			else if ( c == 4 ){
+				alert("Player use Acid.");
+				trueEnemy.condition.poison = true;
+				counter2 = 5;
+				alert("Enemy is poisoned.");
+				userDealDamageWithoutBuff();
 			}
 			else {
 				userFailToExecute();
@@ -74,4 +91,7 @@ function selection(){
 		alert("Please type in the real command.");
 		selection();
 	}
+	
+	conditionB();
+	conditionA();
 }
