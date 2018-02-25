@@ -68,15 +68,24 @@ function strong(){
 }
 
 function winScene(){
+	user.condition.poison = false;
+	trueEnemy.condition.poison = false;
 	alert("Congratulation, you have defeated the enemy. Thank you for playing.");
+	window.stop();
 }
 
 function loseScene(){
+	user.condition.poison = false;
+	trueEnemy.condition.poison = false;
 	alert("How dare you lost to enemy that is half of your power. I feel shame to you. By the way, thanks for playing this game.");
+	window.stop();
 }
 
 function tie(){
+	user.condition.poison = false;
+	trueEnemy.condition.poison = false;
 	alert("You and enemy retreat and promise to battle again. Good ending right? By the way, thanks for playing this game.");
+	window.stop();
 }
 
 function conditionA(){
@@ -96,13 +105,29 @@ function conditionA(){
 }
 
 function conditionB(){
-	if ( counter2 == 0 ) {
-		alert("Enemy's poison effect wore off.");
-		trueEnemy.condition.poison = false;
+	if ( user.HP > 0 && trueEnemy.HP > 0 ){
+		if ( counter2 == 0 ) {
+			alert("Enemy's poison effect wore off.");
+			counter2--;
+			trueEnemy.condition.poison = false;
+		}
+		else if ( counter1 == 0 ){
+			alert("Player's poison effect wore off.");
+			counter1--;
+			user.condition.poison = false;
+		}
+		else {
+			
+		}
 	}
-	else if ( counter1 == 0 ){
-		alert("Player's poison effect wore off.");
-		user.condition.poison = false;
+	else if ( user.HP <= 0 && trueEnemy.HP <= 0 ){
+		tie();
+	}
+	else if ( user.HP <= 0 && trueEnemy.HP > 0 ){
+		loseScene();
+	}
+	else if ( trueEnemy.HP <= 0 && user.HP > 0 ){
+		winScene();
 	}
 	else {
 		
