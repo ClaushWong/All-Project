@@ -67,6 +67,11 @@ function strong(){
 	strongDmg();
 }
 
+function normal(){
+	alert("Player use " + user.stats + " magic to attack. Enemy deal damage.");
+	normalDmg();
+}
+
 function winScene(){
 	user.condition.poison = false;
 	trueEnemy.condition.poison = false;
@@ -89,14 +94,23 @@ function tie(){
 }
 
 function conditionA(){
-	if ( user.condition.poison == true ){
+	if ( user.condition.poison == true && trueEnemy.condition == true ){
 		user.HP -= 250;
+		trueEnemy.HP -= 1000;
+		alert("Player damaged due to poison.");
+		alert("Enemy damaged due to poison.");
 		counter1--;
+		counter2--;
 	}
-	else if ( trueEnemy.condition.poison == true ){
+	else if ( user.condition.poison == false && trueEnemy.condition.poison == true ){
 		trueEnemy.HP -= 1000;
 		alert("Enemy damaged due to poison.");
 		counter2--;
+	}
+	else if ( user.condition.poison == true && trueEnemy.condition.poison == false ){
+		user.HP -= 250;
+		alert("Player damaged due to poison.");
+		counter1--;
 	}
 	else {
 		
@@ -106,16 +120,24 @@ function conditionA(){
 
 function conditionB(){
 	if ( user.HP > 0 && trueEnemy.HP > 0 ){
-		if ( counter2 == 0 ) {
+		if ( counter2 == 0 && counter1 == 0 ) {
+			alert("Player's poison effect wore off.");
 			alert("Enemy's poison effect wore off.");
+			counter1--;
 			counter2--;
+			user.condition.poison = false;
 			trueEnemy.condition.poison = false;
 		}
-		else if ( counter1 == 0 ){
+		else if ( counter1 == 0  && counter2 != 0 ){
 			alert("Player's poison effect wore off.");
 			counter1--;
 			user.condition.poison = false;
 		}
+		else if ( counter1 != 0 && counter2 == 0 ){
+			alert("Enemy's poison effect wore off.");
+			counter2--;
+			trueEnemy.condition.poison = false;
+		}		
 		else {
 			
 		}

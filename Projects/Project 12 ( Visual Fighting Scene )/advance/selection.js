@@ -22,6 +22,10 @@ function selection(){
 					strong();
 					userDealDamageWithoutBuff();
 				}
+				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "null"){
+					normal();
+					userDealDamageWithoutBuff();
+				}
 				else {
 					alert("Error Occur.");
 				}
@@ -40,6 +44,10 @@ function selection(){
 					strong();
 					userDealDamageWithoutBuff();
 				}
+				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "null"){
+					normal();
+					userDealDamageWithoutBuff();
+				}
 				else {
 					alert("Error Occur.");
 				}
@@ -56,6 +64,10 @@ function selection(){
 				}
 				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "Water" ){
 					strong();
+					userDealDamageWithoutBuff();
+				}
+				else if ( user.stats != trueEnemy.stats && trueEnemy.stats == "null"){
+					normal();
 					userDealDamageWithoutBuff();
 				}
 				else {

@@ -125,3 +125,7 @@ function weakDmg(){
 function strongDmg(){
 	trueEnemy.HP -= Math.abs( ( user.mgkDmg * 1.5 ) - trueEnemy.mgkDef );
 }
+
+function normalDmg(){
+	trueEnemy.HP -= Math.abs( user.mgkDmg - trueEnemy.mgkDef );
+}
