@@ -65,7 +65,7 @@ function selection(){
 			else if ( c == 4 ){
 				alert("Player use Acid.");
 				trueEnemy.condition.poison = true;
-				counter2 = 5;
+				counter2 = 3;
 				alert("Enemy is poisoned.");
 				userDealDamageWithoutBuff();
 			}
